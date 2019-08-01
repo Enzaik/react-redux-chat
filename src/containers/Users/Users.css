@@ -1,0 +1,12 @@
+.Users {
+  /* border: 1px solid black;*/
+  position: absolute;
+  width: 30%;
+  height: 550px;
+  box-sizing: border-box;
+}
+
+.Users ul {
+  padding: 0px;
+  margin: 0px;
+}

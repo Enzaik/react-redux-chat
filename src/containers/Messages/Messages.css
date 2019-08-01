@@ -1,0 +1,10 @@
+.Messages {
+/*  border: 1px solid black;*/
+  position: absolute;
+  right: 0;
+  width: 70%;
+  height: 550px;
+  text-align: center;
+  box-sizing: border-box;
+  line-height: 42px;
+}

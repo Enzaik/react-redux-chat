@@ -1,0 +1,18 @@
+.User{
+    list-style: none;
+   /* border-bottom: 1px solid;*/
+   font-family: Product Sans Regular;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding-left: 10px;
+    line-height: 38px;
+}
+
+.Selected {
+    color: rgb(234, 0, 50);
+    background-color: rgb(255, 230, 230); 
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
