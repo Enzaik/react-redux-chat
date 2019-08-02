@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Messages from '../../containers/Messages/Messages';
-import Users from '../../containers/Users/Users';
+import Threads from '../../containers/Threads/Threads';
 import Toolbar from '../../components/Toolbar/Toolbar';
 
 class Layout extends Component {
@@ -10,7 +10,7 @@ class Layout extends Component {
             <div>
                 <Toolbar />
                 <div className="main">
-                    <Users />
+                    <Threads />
                     <Messages />
                 </div>
             </div>

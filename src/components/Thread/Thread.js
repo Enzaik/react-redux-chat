@@ -1,14 +1,11 @@
 import React from 'react';
 
+import classes from './Thread.css';
 
-import classes from './User.css';
-
-
-
-const user = (props) => {
+const thread = (props) => {
 
     let classesArray = [];
-    classesArray.push(classes.User);
+    classesArray.push(classes.Thread);
     if (props.selected) {
         classesArray.push(classes.Selected)
     }
@@ -19,4 +16,4 @@ const user = (props) => {
     );
 }
 
-export default user;
+export default thread;
