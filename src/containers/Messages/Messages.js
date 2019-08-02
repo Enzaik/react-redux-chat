@@ -20,6 +20,7 @@ class Messages extends Component {
          console.log('container messages' ,this.props.messages);
         let messages = this.props.messages.map(message => (
             <Message
+            logged='gambino'
             sender={message.idSender} 
             receiver={message.idReceiver} 
             text={message.text}/>

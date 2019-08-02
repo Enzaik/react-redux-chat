@@ -8,11 +8,12 @@
     cursor: pointer;
     padding-left: 10px;
     line-height: 38px;
+    text-align: center;
 }
 
 .Selected {
-    color: rgb(234, 0, 50);
-    background-color: rgb(255, 230, 230); 
+    color: rgb(52, 92, 225);
+    background-color: rgb(232, 239, 253); 
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
