@@ -12,21 +12,21 @@ class Messages extends Component {
         for (var param of query.entries()) {
             console.log(param);
        }
-     //  this.props.onInitMessages('vendor');
+       this.props.onInitMessages('vendor');
 
     }
 
     render() {
-        // console.log('messages' ,this.props.messages);
-        // let messages = this.props.messages.map(message => (
-        //     <Message text={message.text}/>
-        // )
+         console.log('container messages' ,this.props.messages);
+        let messages = this.props.messages.map(message => (
+            <Message text={message.text}/>
+        )
 
-        // )
+        )
         
         return (
             <section className={classes.Messages}>
-           <Message />
+           {messages}
             </section>
         )
     }
@@ -34,13 +34,13 @@ class Messages extends Component {
 
 const mapStateToProps = state => {
     return {
-      //  messages: state.message.messages
+        messages: state.message.messages
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-      //  onInitMessages: (user) => dispatch(actions.fetchMessages(user))
+        onInitMessages: (user) => dispatch(actions.fetchMessages(user))
     };
 };
 

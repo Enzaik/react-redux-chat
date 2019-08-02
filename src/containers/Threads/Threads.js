@@ -18,22 +18,23 @@ class Threads extends Component {
             pathname: "/messages",
             search: '?user=' + name
         })
-      
-         this.props.onSelectThread(name);
+
+        this.props.onSelectThread(name);
+        this.props.onUpdateMessages(name);
         console.log('name', name);
-        
+
     }
 
     render() {
-        const users =  this.props.thrds.map(user => {
-         return <Thread
+        const users = this.props.thrds.map(user => {
+            return <Thread
                 name={user.user}
                 selected={this.props.selectedTh === user.user}
                 clicked={() => this.clickHandler(user.idUser, user.user)} />
-         })
+        })
 
         return (
-            <section className={classes.Users}>
+            <section className={classes.Threads}>
                 <ul>
                     {users}
                 </ul>
@@ -53,7 +54,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onInitThreads: () => dispatch(actions.fetchThreads()),
-       onSelectThread: (user) => dispatch(actions.selectThread(user))
+        onSelectThread: (user) => dispatch(actions.selectThread(user)),
+        onUpdateMessages: (user) => dispatch(actions.fetchMessages(user))
     }
 }
 

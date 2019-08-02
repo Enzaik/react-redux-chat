@@ -5,4 +5,4 @@ export {
     fetchThreadFail,
     selectThread
 } from './threads';
-export {fe} from './messages'
+export {fetchMessages} from './messages'
