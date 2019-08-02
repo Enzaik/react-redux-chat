@@ -1,9 +1,11 @@
 import React from 'react';
 
-import * as classes from './Message.css'
+import classes from './Message.css'
 
 const message = (props) => (
-   <p>{props.text}</p>
+   <p className={classes.Message}
+   sender={props.sender}
+   receiver={props.receiver}>{props.text}</p>
 );
 
 export default message;

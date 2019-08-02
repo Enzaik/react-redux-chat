@@ -19,7 +19,10 @@ class Messages extends Component {
     render() {
          console.log('container messages' ,this.props.messages);
         let messages = this.props.messages.map(message => (
-            <Message text={message.text}/>
+            <Message
+            sender={message.idSender} 
+            receiver={message.idReceiver} 
+            text={message.text}/>
         )
 
         )
