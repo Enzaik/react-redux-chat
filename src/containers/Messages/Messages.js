@@ -7,17 +7,17 @@ import * as actions from '../../store/actions/index';
 import Message from '../../components/Message/Message';
 
 class Messages extends Component {
-    componentWillMount() {
+    componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         for (var param of query.entries()) {
-            console.log(param);
+           // console.log(param);
        }
        this.props.onInitMessages('vendor');
 
     }
 
     render() {
-         console.log('container messages' ,this.props.messages);
+         //console.log('container messages' ,this.props.messages);
         let messages = this.props.messages.map(message => (
             <Message
             logged='gambino'

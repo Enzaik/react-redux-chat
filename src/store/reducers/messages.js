@@ -1,22 +1,33 @@
 import * as actionTypes from '../actions/actionTypes';
 
 import { updateObject } from '../../utility';
+
 const initialState = {
-    messages: []
+    messages: [],
+    threads: []
 };
 
 const reducer = (state = initialState, action) => {
-    console.log('message action ddata', action);
-    
+    let threads = [
+        
+    ];
+    let alien = '';
     switch (action.type) {
         case actionTypes.FETCH_MESSAGES_SUCCESS:
-            let newThread = action.data.filter(thread => {
-                return thread.user === action.user
+            let messages = action.data.filter(message => {
+                return message.idReceiver === "me" || message.idSender === "me"
+            });
+            console.log('messagesss', messages);
+            messages.forEach(message => {
+                alien = message.idSender === 'me' ? message.idReceiver : message.idSender
+                threads.push(alien)
             })
-            console.log('newthread', newThread);
-            return updateObject(state, {messages: newThread[0].messages}); //  TODO: improve this
-            
-                
+            let uniqueThreads = [...new Set(threads)]
+            console.log('thr', uniqueThreads);
+            return updateObject(...state, {messages: messages, threads: uniqueThreads});
+             //  TODO: improve this
+
+
         default:
             return state;
 

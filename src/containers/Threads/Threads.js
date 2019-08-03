@@ -9,11 +9,11 @@ import * as actions from '../../store/actions/index';
 class Threads extends Component {
 
     componentDidMount() {
-        this.props.onInitThreads();
+        // this.props.onInitThreads();
     }
 
-    clickHandler = (id, name) => {
-        this.setState({ selectedUser: id });
+    clickHandler = (name) => {
+        // this.setState({ selectedUser: id });
         this.props.history.push({
             pathname: "/messages",
             search: '?user=' + name
@@ -26,17 +26,19 @@ class Threads extends Component {
     }
 
     render() {
+        console.log('usersss', this.props.thrds);
         const users = this.props.thrds.map(user => {
             return <Thread
-                name={user.user}
-                selected={this.props.selectedTh === user.user}
-                clicked={() => this.clickHandler(user.idUser, user.user)} />
+                name={user}
+                selected={this.props.selectedTh === user}
+                clicked={() => this.clickHandler(user)} />
         })
 
         return (
             <section className={classes.Threads}>
                 <ul>
                     {users}
+
                 </ul>
             </section>
         )
@@ -46,7 +48,7 @@ class Threads extends Component {
 
 const mapStateToProps = state => {
     return {
-        thrds: state.thread.threads,
+        thrds: state.message.threads,
         selectedTh: state.thread.selectedThread
     }
 }
