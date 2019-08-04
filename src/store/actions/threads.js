@@ -11,7 +11,7 @@ export const fetchThreads = (user) => {
         .then(
             res => {
                 dispatch(fetchThreadsSuccess(res.data, user));
-                dispatch(fetchMessagesSuccess());
+                
             }
         )
     }
@@ -33,9 +33,5 @@ export const selectThread = (idThread) => {
     }
 }
 
-export const fetchMessagesSuccess = () =>{
-    return {
-        type: actionTypes.FETCH_MESSAGES_SUCCESS
-    }
-}
+
 

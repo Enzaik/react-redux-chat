@@ -15,6 +15,7 @@ const reducer = (state = initialState, action) => {
                 console.log('FETCH_THREADS_SUCCESS', state.threads);
             let newThreads = [];
             let alien = "";
+            let counter = 0;
             action.data.forEach(thread => {
                 alien = thread.parts[0] === "me" ? thread.parts[1] : thread.parts[0];
                 newThreads.push(alien);

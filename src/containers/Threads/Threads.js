@@ -22,10 +22,11 @@ class Threads extends Component {
             search: '?user=' + name
         })
         this.props.onSelectThread(name);
+        this.props.onFetchMessages(name, this.props.thrds.indexOf(name));
     }
 
     render() {
-        console.log('this.props.thrds', this.props.thrds);
+        console.log('this.props.thrds', this.props.thrds.indexOf("system"));
         const users = this.props.thrds.map(user => {
             return <Thread
                 key={user}
@@ -57,7 +58,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onSelectThread: (idThread) => dispatch(actions.selectThread(idThread)),
-        onFetchMessages: (threadName) => dispatch(actions.fetchMessages(threadName))
+        onFetchMessages: (threadName, index) => dispatch(actions.fetchMessages(threadName, index))
     }
 }
 

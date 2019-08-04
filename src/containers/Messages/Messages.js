@@ -17,17 +17,16 @@ class Messages extends Component {
     }
 
     render() {
-         //console.log('container messages' ,this.props.messages);
-        // let messages = this.props.messages.map(message => (
-        //     <Message
-        //     logged='gambino' //hardcode
-        //     sender={message.idSender} 
-        //     receiver={message.idReceiver} 
-        //     text={message.text}/>
-        // )
+        let messages = this.props.messages.map(message => (
+            <Message
+            logged='gambino' //hardcode
+            sender={message.idSender} 
+            receiver={message.idReceiver} 
+            text={message.text}/>
+        )
 
-        // )
-        const messages = <Message />
+        )
+        
         
         return (
             <section className={classes.Messages}>

@@ -2,4 +2,7 @@ export {
     selectThread,
     fetchThreads
 } from './threads';
-export {fetchMessages} from './messages'
+export {
+    fetchMessages,
+    fetchMessagesSuccess
+} from './messages'

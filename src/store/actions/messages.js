@@ -2,13 +2,13 @@ import * as actionTypes from './actionTypes';
 
 import axios from '../../axios-instance';
 
-export const fetchMessages = (user, firstTime) => {
+export const fetchMessages = (user) => {
     return dispatch => {
            dispatch(fetchMessagesStart());
         axios.get('/messages.json')
             .then(
                 res => {
-                    dispatch(fetchMessagesSuccess(res.data, user, firstTime))
+                    dispatch(fetchMessagesSuccess(res.data, user))
                 }
             )
             .catch(err => {
@@ -27,11 +27,11 @@ export const fetchMessagesFail = () => {
         type: actionTypes.FETCH_MESSAGES_FAIL
     };
 };
-export const fetchMessagesSuccess = (data, user, firstTime) => {
+export const fetchMessagesSuccess = (data, user, id) => {
     return {
         type: actionTypes.FETCH_MESSAGES_SUCCESS,
         data: data,
         user: user,
-        firstTime: firstTime
+        id
     };
 };
