@@ -1,48 +1,41 @@
-import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
 
+import * as actionTypes from './actionTypes';
 
 
-export const fetchThreads = () => {
+
+export const fetchThreads = (user) => {
+    console.log('fetchThread');
     return dispatch => {
-           dispatch(fetchThreadsStart());
         axios.get('/threads.json')
-            .then(
-                res => {
-                    console.log('res.data',res.data);
-                    dispatch(fetchThreadSuccess(res.data))
-                }
-            )
-            .catch(err => {
-             //   console.log(err);
-                dispatch(fetchThreadFail(err))
-            });
-    };
-};
+        .then(
+            res => {
+                dispatch(fetchThreadsSuccess(res.data, user));
+                dispatch(fetchMessagesSuccess());
+            }
+        )
+    }
 
-export const fetchThreadsStart = () => {
-    return {
-        type: actionTypes.FETCH_THREADS_START
-    };
-};
-export const fetchThreadFail = () => {
-    return {
-        type: actionTypes.FETCH_THREADS_FAIL
-    };
-};
+}
 
-export const fetchThreadSuccess = (data) => {
-   // console.log('fetchThreadSuccess', data);
-    
+export const fetchThreadsSuccess = (data,user) => {
     return {
         type: actionTypes.FETCH_THREADS_SUCCESS,
-        threads: data
+        data: data,
+        user: user
     };
 };
 
-export const selectThread = (selectedThread) => {
+export const selectThread = (idThread) => {
     return {
         type: actionTypes.SELECT_THREAD,
-        thread: selectedThread
+        idThread: idThread
     }
 }
+
+export const fetchMessagesSuccess = () =>{
+    return {
+        type: actionTypes.FETCH_MESSAGES_SUCCESS
+    }
+}
+

@@ -12,21 +12,22 @@ class Messages extends Component {
         for (var param of query.entries()) {
            // console.log(param);
        }
-       this.props.onInitMessages('vendor');
+     //  this.props.onInitMessages('vendor');
 
     }
 
     render() {
          //console.log('container messages' ,this.props.messages);
-        let messages = this.props.messages.map(message => (
-            <Message
-            logged='gambino'
-            sender={message.idSender} 
-            receiver={message.idReceiver} 
-            text={message.text}/>
-        )
+        // let messages = this.props.messages.map(message => (
+        //     <Message
+        //     logged='gambino' //hardcode
+        //     sender={message.idSender} 
+        //     receiver={message.idReceiver} 
+        //     text={message.text}/>
+        // )
 
-        )
+        // )
+        const messages = <Message />
         
         return (
             <section className={classes.Messages}>
@@ -42,10 +43,10 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
+/*const mapDispatchToProps = dispatch => {
     return {
         onInitMessages: (user) => dispatch(actions.fetchMessages(user))
     };
-};
+};*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Messages));
+export default connect(mapStateToProps/*, mapDispatchToProps*/)(withRouter(Messages));
