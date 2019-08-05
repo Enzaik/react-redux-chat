@@ -19,7 +19,7 @@ class Messages extends Component {
     render() {
         let messages = this.props.messages.map(message => (
             <Message
-            logged='gambino' //hardcode
+            logged="me" //hardcode
             sender={message.idSender} 
             receiver={message.idReceiver} 
             text={message.text}/>
