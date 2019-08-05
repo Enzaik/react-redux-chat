@@ -6,6 +6,7 @@ import Messages from '../../containers/Messages/Messages';
 import Threads from '../../containers/Threads/Threads';
 import SendForm from '../../containers/SendForm/SendForm';
 import Toolbar from '../../components/Toolbar/Toolbar';
+import SideDrawer from '../../components/SideDrawer/SideDrawer';
 
 class Layout extends Component {
 
