@@ -3,19 +3,25 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classes from './Messages.css';
 import Message from '../../components/Message/Message';
+import fire from '../../fire';
+import * as actions from '../../store/actions/index';
 
 class Messages extends Component {
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         for (var param of query.entries()) {
-            console.log(param);
+           // console.log(param);
         }
-        //  this.props.onInitMessages('vendor');
+        let messagesRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+        messagesRef.on('child_added', snapshot => {
+            this.props.onUpdateMessage(this.props.user);
+        })
+ 
 
     }
 
     render() {
-        console.log('message props',this.props);
+       // console.log('message props',this.props);
                 let messages = this.props.messages.map(message => (
             <Message
                 logged="me" //hardcode
@@ -37,9 +43,15 @@ class Messages extends Component {
 
 const mapStateToProps = state => {
     return {
-        messages: state.message.messages
+        messages: state.message.messages,
+        user: state.thread.selectedThread
     };
 };
 
+const mapDispatchToProps = dispatch =>{
+    return {
+        onUpdateMessage: (user) => dispatch(actions.fetchMessages(user))
+    }
+}
 
-export default connect(mapStateToProps)(withRouter(Messages));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Messages));
