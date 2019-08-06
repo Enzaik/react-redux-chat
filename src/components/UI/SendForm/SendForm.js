@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import classes from './SendForm.css'
 
-const sendForm = (props) => (
-  <form className={classes.SendForm}>
-    <input type="text" />
-    <button>yeah</button>
-  </form>
-)
+class SendForm extends Component {
 
-export default sendForm;
+ 
+
+  render() {
+    return (
+      <form className={classes.SendForm} onSubmit={this.props.submit}>
+        <input 
+        onChange={this.props.changed}
+        value={this.props.value} type="text" />
+        <button>Submit</button>
+      </form>
+    )
+  }
+
+}
+
+export default SendForm;

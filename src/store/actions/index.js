@@ -4,5 +4,6 @@ export {
 } from './threads';
 export {
     fetchMessages,
-    fetchMessagesSuccess
+    fetchMessagesSuccess,
+    sendMessage
 } from './messages'

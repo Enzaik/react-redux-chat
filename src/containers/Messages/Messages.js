@@ -1,36 +1,35 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import classes from './Messages.css'
-import * as actions from '../../store/actions/index';
+import classes from './Messages.css';
 import Message from '../../components/Message/Message';
 
 class Messages extends Component {
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         for (var param of query.entries()) {
-           // console.log(param);
-       }
-     //  this.props.onInitMessages('vendor');
+            console.log(param);
+        }
+        //  this.props.onInitMessages('vendor');
 
     }
 
     render() {
-        let messages = this.props.messages.map(message => (
+        console.log('message props',this.props);
+                let messages = this.props.messages.map(message => (
             <Message
-            logged="me" //hardcode
-            sender={message.idSender} 
-            receiver={message.idReceiver} 
-            text={message.text}/>
+                logged="me" //hardcode
+                sender={message.idSender}
+                receiver={message.idReceiver}
+                text={message.text} />
         )
 
         )
-        
-        
+
+
         return (
             <section className={classes.Messages}>
-           {messages}
+                {messages}
             </section>
         )
     }
@@ -42,10 +41,5 @@ const mapStateToProps = state => {
     };
 };
 
-/*const mapDispatchToProps = dispatch => {
-    return {
-        onInitMessages: (user) => dispatch(actions.fetchMessages(user))
-    };
-};*/
 
-export default connect(mapStateToProps/*, mapDispatchToProps*/)(withRouter(Messages));
+export default connect(mapStateToProps)(withRouter(Messages));

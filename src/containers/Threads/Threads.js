@@ -8,14 +8,6 @@ import * as actions from '../../store/actions/index';
 
 class Threads extends Component {
 
-    componentDidMount() {
-        console.log('threads');
-
-        //  this.props.onSelectThread(0);
-        //  this.props.onFetchMessages(0);
-    }
-
-
     clickHandler = (name) => {
         this.props.history.push({
             pathname: "/messages",
@@ -26,7 +18,7 @@ class Threads extends Component {
     }
 
     render() {
-        console.log('this.props.thrds', this.props.thrds.indexOf("system"));
+       // console.log('this.props.thrds', this.props.thrds.indexOf("system"));
         const users = this.props.thrds.map(user => {
             return <Thread
                 key={user}
@@ -38,7 +30,7 @@ class Threads extends Component {
         // const users = null;
 
         return (
-            <section className={classes.Threads}>
+            <section onClick={this.props.closed} className={classes.Threads}> 
                 <ul>
                     {users}
                 </ul>

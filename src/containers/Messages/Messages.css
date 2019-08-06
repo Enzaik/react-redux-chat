@@ -2,11 +2,14 @@
 /*  border: 1px solid black;*/
   position: absolute;
   display: flex;
+  /* font-size: small; */
   flex-flow: column;
   right: 0;
+  top: 90px;
   width: 70%;
   height: 550px;
   text-align: center;
   box-sizing: border-box;
   line-height: 42px;
+  padding: 18px; 
 }

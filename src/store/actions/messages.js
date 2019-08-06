@@ -4,11 +4,11 @@ import axios from '../../axios-instance';
 
 export const fetchMessages = (user) => {
     return dispatch => {
-           dispatch(fetchMessagesStart());
+        dispatch(fetchMessagesStart());
         axios.get('/messages.json')
             .then(
                 res => {
-                    dispatch(fetchMessagesSuccess(res.data, user))
+                  dispatch(fetchMessagesSuccess(res.data, user))
                 }
             )
             .catch(err => {
@@ -35,3 +35,15 @@ export const fetchMessagesSuccess = (data, user, id) => {
         id
     };
 };
+
+export const sendMessage = (message) => {
+    return dispatch => {
+        axios.post('/messages.json', message)
+            .then(response => {
+                console.log('messages reducer',response.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+}

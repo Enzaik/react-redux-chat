@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
+import Aux from '../Aux/Aux'
 import * as actions from '../../store/actions/index';
 import Messages from '../../containers/Messages/Messages';
 import Threads from '../../containers/Threads/Threads';
@@ -10,22 +11,42 @@ import SideDrawer from '../../components/SideDrawer/SideDrawer';
 
 class Layout extends Component {
 
-componentDidMount() {
-    this.props.onInit('vendor'); //hardcode
-    console.log('layout');
-}
+    state = {
+        showSideDrawer: false
+    }
+
+    sideDrawerClosedHandler = () => {
+        this.setState({ showSideDrawer: false });
+    }
+
+    sideDrawerToggleHandler = () => {
+        this.setState((prevState) => {
+            return { showSideDrawer: !prevState.showSideDrawer };
+        });
+    }
+
+    componentDidMount() {
+        this.props.onInit('vendor'); //hardcode
+        console.log('layout');
+    }
+
+
 
     render() {
         return (
-            <div>
-                <Toolbar />
+            <Aux>
+                <Toolbar
+                    isAuth={this.props.isAuthenticated}
+                    drawerToggleClicked={this.sideDrawerToggleHandler} />
+                <SideDrawer isAuth={this.props.isAuthenticated}
+                    open={this.state.showSideDrawer}
+                    closed={this.sideDrawerClosedHandler} />
                 <div className="main">
-                    <Threads />
+                    <Threads /> 
                     <Messages />
                     <SendForm />
-
                 </div>
-            </div>
+            </Aux>
         )
     }
 }

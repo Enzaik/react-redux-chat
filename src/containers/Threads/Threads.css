@@ -1,12 +1,21 @@
 .Threads {
   /* border: 1px solid black;*/
   position: absolute;
+  top:70px;
   width: 30%;
   height: 550px;
+  /* font-size: small; */
   box-sizing: border-box;
 }
 
 .Threads ul {
   padding: 0px;
   margin: 0px;
+}
+
+
+@media (max-width: 499px) {
+  .Threads {
+      display: none;
+  }
 }
