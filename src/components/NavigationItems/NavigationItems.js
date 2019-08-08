@@ -7,15 +7,14 @@ import NavigationItem from './NavigationItem/NavigationItem';
 const navigationItems = (props) => (
     <ul className={classes.NavigationItems}>
         <NavigationItem link="/" exact>Chat</NavigationItem>
-        {console.log('isAuthenticated', props.isAuthenticated)}
+        <NavigationItem link="/users" >Users</NavigationItem>
         {!props.isAuthenticated
             ?
             <NavigationItem link="/auth">Auth</NavigationItem>
             :
             <NavigationItem link="/logout">Log out</NavigationItem>
         }
-
-    </ul>
+  </ul>
 );
 
 export default withRouter(navigationItems); 

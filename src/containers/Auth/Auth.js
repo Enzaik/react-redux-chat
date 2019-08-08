@@ -76,7 +76,7 @@ class auth extends Component {
     }
 
     componentDidMount (){
-        console.log('componentDidMount auth', this.props);
+       // console.log('componentDidMount auth', this.props);
         
     }
 

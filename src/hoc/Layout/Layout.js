@@ -9,7 +9,7 @@ import Aux from '../Aux/Aux'
 import * as actions from '../../store/actions/index';
 
 import Toolbar from '../../components/Toolbar/Toolbar';
-import SideDrawer from '../../components/SideDrawer/SideDrawer'; 
+import SideDrawer from '../../components/SideDrawer/SideDrawer';
 
 class Layout extends Component {
 
@@ -28,19 +28,26 @@ class Layout extends Component {
     }
 
     componentDidMount() {
-        this.props.onInit('vendor'); //hardcode
-       
+        const query = new URLSearchParams(this.props.location.search);
+        console.log('query', this.props.location.search === "");
+        if (this.props.location.search !== "") {
+            console.log('rendering params');
+            for (var param of query.entries()) {
+                this.props.onInit(param[1]);
+                this.props.history.push(this.props.location.pathname + this.props.location.search)
+            }
+        } else {
+            console.log('rendering vendor');
+            this.props.onInit('vendor'); //hardcode
+        }
     }
 
 
 
     render() {
-        console.log('layout props', this.props);
-
-        return (
+       return (
             <Aux>
                 <Toolbar
-                
                     isAuth={this.props.isAuthenticated}
                     drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <SideDrawer isAuth={this.props.isAuthenticated}
