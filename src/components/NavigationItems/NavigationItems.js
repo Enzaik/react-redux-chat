@@ -12,7 +12,7 @@ const navigationItems = (props) => (
             ?
             <NavigationItem link="/auth">Auth</NavigationItem>
             :
-            <NavigationItem link="/logout">Log out</NavigationItem>
+            <NavigationItem link="/logout">Log out ( {localStorage.getItem('user')} )</NavigationItem>
         }
   </ul>
 );

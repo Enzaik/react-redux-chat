@@ -54,11 +54,12 @@ export const auth = (email, password, isSingUp) => {
             : 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDE2ZDsH6VzEdCB25zG0YeAh6eHkYW1R5k'
         axios.post(url, authData)
             .then(response => {
-                console.log('response', response);
+               // console.log('RESPONSE', response.data.email.split('@')[0]);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userID', response.data.localId);
+                localStorage.setItem('user', response.data.email.split('@')[0]);
                 dispatch(authSuccess(response.data.idToken, response.data.localId));
                 dispatch(checkAuthTimeout(response.data.expiresIn))
             })
