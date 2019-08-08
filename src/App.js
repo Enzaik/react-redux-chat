@@ -38,7 +38,7 @@ class App extends Component {
         <Route path="/logout" component={Logout} />
         <Route path="/" exact component={Threads} />
         <Route path="/" exact component={Messages} />
-        <Route path="/" exact component={SubmitForm} />
+        <Route path="/"  component={SubmitForm} />
       </div>)
     }
 
