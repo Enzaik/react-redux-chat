@@ -4,10 +4,16 @@ import axios from '../../axios-instance';
 
 export const fetchMessages = (user) => {
     return dispatch => {
+    //  axios.get('/messages/1.json').then(respnn => {
+    //         console.log('second', respnn);
+            
+    //     })
+
         dispatch(fetchMessagesStart());
         axios.get('/messages.json')
             .then(
                 res => {
+ 
                     dispatch(fetchMessagesSuccess(res.data, user))
                 }
             )

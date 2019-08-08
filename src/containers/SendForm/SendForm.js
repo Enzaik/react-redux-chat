@@ -22,7 +22,7 @@ class SendFormCont extends Component {
         const newMessage = {
             id: '',
             idReceiver: this.props.selected,
-            idSender: "me", //hardcode
+            idSender: localStorage.getItem('user'),
             idThread: this.props.selected,
             text: this.state.value
         }

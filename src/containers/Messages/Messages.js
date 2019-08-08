@@ -21,7 +21,7 @@ class Messages extends Component {
        // console.log('message props',this.props);
                 let messages = this.props.messages.map(message => (
             <Message
-                logged="me" //hardcode
+                logged={localStorage.getItem('user')} //hardcode
                 sender={message.idSender}
                 receiver={message.idReceiver}
                 text={message.text} />
