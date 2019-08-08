@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Route, Switch, Redirect } from 'react-router-dom';
+
 
 import classes from './Layout.css';
 import Aux from '../Aux/Aux'
-import Auth from '../../containers/Auth/Auth';
+
 import * as actions from '../../store/actions/index';
-import Messages from '../../containers/Messages/Messages';
-import Threads from '../../containers/Threads/Threads';
-import SendForm from '../../containers/SendForm/SendForm';
+
 import Toolbar from '../../components/Toolbar/Toolbar';
 import SideDrawer from '../../components/SideDrawer/SideDrawer'; 
 

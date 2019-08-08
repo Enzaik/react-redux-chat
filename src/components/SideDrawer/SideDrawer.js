@@ -8,6 +8,7 @@ import * as actions from '../../store/actions/index';
 import classes from './SideDrawer.css';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import Aux from '../../hoc/Aux/Aux';
+import NavigationItems from '../NavigationItems/NavigationItems';
 
 class SideDrawer extends Component {
     clickHandler = (name) => {
@@ -44,8 +45,10 @@ class SideDrawer extends Component {
                     <div className={classes.Logo}>
                         <Logo />
                     </div>
-                    <nav>
+                    <nav><div>
                         {users} 
+                        <NavigationItems isAuthenticated={this.props.isAuth} />
+                        </div>
                     </nav>
                 </div>
             </Aux>

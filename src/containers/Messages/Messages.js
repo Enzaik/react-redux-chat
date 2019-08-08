@@ -10,7 +10,7 @@ class Messages extends Component {
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         for (var param of query.entries()) {
-           // console.log(param);
+            console.log(param);
         }
         let messagesRef = fire.database().ref('messages').orderByKey().limitToLast(100);
         messagesRef.on('child_added', snapshot => {
