@@ -13,3 +13,8 @@ export const FETCH_MESSAGES_FAIL = 'FETCH_MESSAGES_FAIL';
 export const SELECT_THREAD  = 'SELECT_THREAD';
 
 export const SEND_MESSAGE = 'SEND_MESSAGE';
+
+export const AUTH_START = 'AUTH_START';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT'; 

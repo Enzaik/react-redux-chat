@@ -8,21 +8,21 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    let newMessages = []; 
+    let newMessages = [];
 
     switch (action.type) {
         case actionTypes.FETCH_MESSAGES_SUCCESS:
             // let index = state.threads.indexOf(action.user)
-          //  console.log('action data', action.data);
-          let alien = '';
-          let msgs = Object.keys(action.data);
-          console.log('FETCH_MESSAGES_SUCCESS', action.data);
-        const messages =  msgs.map(msg =>{
-         
-           return action.data[msg];
-        })
-      newMessages = messages.filter(message => {
-             //   console.log('alien', alien);
+            //  console.log('action data', action.data);
+            let alien = '';
+            let msgs = Object.keys(action.data);
+            //  console.log('FETCH_MESSAGES_SUCCESS', action.data);
+            const messages = msgs.map(msg => {
+
+                return action.data[msg];
+            })
+            newMessages = messages.filter(message => {
+                //   console.log('alien', alien);
                 alien = message.idReceiver === "me" ? message.idSender : message.idReceiver;
                 return alien === action.user
             })

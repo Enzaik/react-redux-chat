@@ -6,4 +6,9 @@ export {
     fetchMessages,
     fetchMessagesSuccess,
     sendMessage
-} from './messages'
+} from './messages';
+export {
+    auth,
+    logout,
+    authCheckState
+} from './auth';

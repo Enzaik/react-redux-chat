@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
+import classes from './Layout.css';
 import Aux from '../Aux/Aux'
+import Auth from '../../containers/Auth/Auth';
 import * as actions from '../../store/actions/index';
 import Messages from '../../containers/Messages/Messages';
 import Threads from '../../containers/Threads/Threads';
 import SendForm from '../../containers/SendForm/SendForm';
 import Toolbar from '../../components/Toolbar/Toolbar';
-import SideDrawer from '../../components/SideDrawer/SideDrawer';
+import SideDrawer from '../../components/SideDrawer/SideDrawer'; 
 
 class Layout extends Component {
 
@@ -27,25 +31,26 @@ class Layout extends Component {
 
     componentDidMount() {
         this.props.onInit('vendor'); //hardcode
-        console.log('layout');
+       
     }
 
 
 
     render() {
+        console.log('layout props', this.props);
+
         return (
             <Aux>
                 <Toolbar
+                
                     isAuth={this.props.isAuthenticated}
                     drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <SideDrawer isAuth={this.props.isAuthenticated}
                     open={this.state.showSideDrawer}
                     closed={this.sideDrawerClosedHandler} />
-                <div className="main">
-                    <Threads /> 
-                    <Messages />
-                    <SendForm />
-                </div>
+                <main className={classes.Content}>
+                    {this.props.children}
+                </main>
             </Aux>
         )
     }
@@ -65,4 +70,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout));

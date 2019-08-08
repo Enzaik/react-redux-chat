@@ -8,11 +8,11 @@ export const fetchMessages = (user) => {
         axios.get('/messages.json')
             .then(
                 res => {
-                  dispatch(fetchMessagesSuccess(res.data, user))
+                    dispatch(fetchMessagesSuccess(res.data, user))
                 }
             )
             .catch(err => {
-                dispatch(fetchMessagesFail(err)) 
+                dispatch(fetchMessagesFail(err))
             });
     };
 };
@@ -40,8 +40,6 @@ export const sendMessage = (message) => {
     return dispatch => {
         axios.post('/messages.json', message)
             .then(response => {
-                console.log('messages reducer',response.data);
-               
             })
             .catch(err => {
                 console.log(err);

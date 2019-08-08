@@ -50,8 +50,8 @@ export const auth = (email, password, isSingUp) => {
             returnSecureToken: true
         };
         let url = isSingUp
-            ? 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB893Eesq9v-Q_UWA50ri8dtLJpGGCBmCo'
-            : 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB893Eesq9v-Q_UWA50ri8dtLJpGGCBmCo'
+            ? 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDE2ZDsH6VzEdCB25zG0YeAh6eHkYW1R5k'
+            : 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDE2ZDsH6VzEdCB25zG0YeAh6eHkYW1R5k'
         axios.post(url, authData)
             .then(response => {
                 console.log('response', response);

@@ -10,12 +10,14 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import messageReducer from './store/reducers/messages';
 import userReducer from './store/reducers/threads';
+import authReducer from './store/reducers/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     message: messageReducer,
-    thread: userReducer
+    thread: userReducer,
+    auth: authReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(
