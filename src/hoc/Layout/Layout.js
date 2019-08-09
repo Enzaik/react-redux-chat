@@ -5,9 +5,7 @@ import { withRouter } from 'react-router';
 
 import classes from './Layout.css';
 import Aux from '../Aux/Aux'
-
 import * as actions from '../../store/actions/index';
-
 import Toolbar from '../../components/Toolbar/Toolbar';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 
@@ -29,7 +27,7 @@ class Layout extends Component {
 
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
-        console.log('query', this.props.location.search === "");
+        console.log('componentDidMount');
         if (this.props.location.search !== "") {
             console.log('rendering params');
             for (var param of query.entries()) {
@@ -38,7 +36,7 @@ class Layout extends Component {
             }
         } else {
             console.log('rendering vendor');
-            this.props.onInit('vendor'); //hardcode
+            this.props.onInit(null); 
         }
     }
 

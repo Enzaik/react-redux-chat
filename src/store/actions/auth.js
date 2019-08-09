@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-instance';
 
 import * as actionTypes from './actionTypes';
 
@@ -54,14 +54,24 @@ export const auth = (email, password, isSingUp) => {
             : 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDE2ZDsH6VzEdCB25zG0YeAh6eHkYW1R5k'
         axios.post(url, authData)
             .then(response => {
-               // console.log('RESPONSE', response.data.email.split('@')[0]);
+                // console.log('RESPONSE', response.data.email.split('@')[0]);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userID', response.data.localId);
                 localStorage.setItem('user', response.data.email.split('@')[0]);
                 dispatch(authSuccess(response.data.idToken, response.data.localId));
-                dispatch(checkAuthTimeout(response.data.expiresIn))
+                dispatch(checkAuthTimeout(response.data.expiresIn));
+                axios.get('/threads.json')
+                    .then(
+                        res => {
+                            console.log(res.data);
+                            dispatch(initThreads(res.data, null));
+
+                        }
+                    )
+
+                // dispatch(initThreads(response.data, null))
             })
             .catch(err => {
                 console.log(err);
@@ -89,5 +99,13 @@ export const authCheckState = () => {
         }
 
     }
+}
+
+export const initThreads = (data, user) => {
+    return {
+        type: actionTypes.FETCH_THREADS_SUCCESS,
+        data: data,
+        user: user
+    };
 }
 

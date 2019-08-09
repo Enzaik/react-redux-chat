@@ -7,11 +7,13 @@ const initialState = {
 
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => { 
     let newMessages = [];
-
+   
+    
     switch (action.type) {
         case actionTypes.FETCH_MESSAGES_SUCCESS:
+            console.log(('FETCH_MESSAGES_SUCCESS action',action.user));
             let alien = '';
             let loggedUser = localStorage.getItem('user');
             let msgs = Object.keys(action.data);

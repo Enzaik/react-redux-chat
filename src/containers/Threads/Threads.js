@@ -8,6 +8,11 @@ import * as actions from '../../store/actions/index';
 
 class Threads extends Component {
 
+    componentDidMount() { //log only
+        this.props.onInitMessages(this.props.selectedTh)
+        console.log('componentDidMount', this.props);
+    }
+
     clickHandler = (name) => {
         this.props.history.push({
             pathname: "/messages",
@@ -18,7 +23,7 @@ class Threads extends Component {
     }
 
     render() {
-       // console.log('this.props.thrds', this.props.thrds.indexOf("system"));
+        // console.log('this.props.thrds', this.props.thrds.indexOf("system"));
         const users = this.props.thrds.map(user => {
             return <Thread
                 key={user}
@@ -30,7 +35,7 @@ class Threads extends Component {
         // const users = null;
 
         return (
-            <section onClick={this.props.closed} className={classes.Threads}> 
+            <section onClick={this.props.closed} className={classes.Threads}>
                 <ul>
                     {users}
                 </ul>
@@ -49,6 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        onInitMessages: (user) => dispatch(actions.fetchMessages(user)),
         onSelectThread: (idThread) => dispatch(actions.selectThread(idThread)),
         onFetchMessages: (threadName, index) => dispatch(actions.fetchMessages(threadName, index))
     }

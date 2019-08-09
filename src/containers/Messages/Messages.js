@@ -8,27 +8,21 @@ import * as actions from '../../store/actions/index';
 
 class Messages extends Component {
     componentDidMount() {
-
+        console.log('componentDidMount');
         let messagesRef = fire.database().ref('messages').orderByKey().limitToLast(100);
         messagesRef.on('child_added', snapshot => {
             this.props.onUpdateMessage(this.props.user);
         })
- 
-
     }
 
     render() {
-       // console.log('message props',this.props);
-                let messages = this.props.messages.map(message => (
+        let messages = this.props.messages.map(message => (
             <Message
-                logged={localStorage.getItem('user')} //hardcode
+                logged={localStorage.getItem('user')}
                 sender={message.idSender}
                 receiver={message.idReceiver}
                 text={message.text} />
-        )
-
-        )
-
+        ))
 
         return (
             <section className={classes.Messages}>
@@ -45,7 +39,7 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch =>{
+const mapDispatchToProps = dispatch => {
     return {
         onUpdateMessage: (user) => dispatch(actions.fetchMessages(user))
     }

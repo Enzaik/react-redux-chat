@@ -9,40 +9,45 @@ const initialState = {
 
 
 const reducer = (state = initialState, action) => {
-
     switch (action.type) {
         case actionTypes.FETCH_THREADS_SUCCESS:
-            console.log('FETCH_THREADS_SUCCESS', action.data);
             let loggedUser = localStorage.getItem('user');
+            let selectedUser = action.user;
             let newThreads = [];
             let alien = "";
             let exists = false;
+            let cont = 0;
             action.data.forEach(thread => {
                 exists = false;
-                console.log('the', thread.parts, loggedUser);
-                
-                // alien = thread.parts[0] === "me" ? thread.parts[1] : thread.parts[0];
-                // newThreads.push(alien);
-                if ( thread.parts[1] === loggedUser) {
+                if (thread.parts[1] === loggedUser) { //thread: ['user', 'loggedUser']
                     alien = thread.parts[0];
+                    if (cont === 0 && selectedUser == null) {
+                        selectedUser = alien;
+                        cont++;
+                        console.log('cont one', selectedUser);
+                    }
                     exists = true;
-                    console.log('one');
-               }
+
+                }
                 if (thread.parts[0] === loggedUser) {
                     alien = thread.parts[1];
+                    if (cont === 0 && selectedUser == null) {
+                        selectedUser = alien;
+                        cont++;
+                        console.log('cont two', selectedUser);
+                    }
                     exists = true;
-                    console.log('two');
                 }
                 if (exists) {
                     newThreads.push(alien);
                 }
             })
-            return updateObject(...state, { threads: newThreads, selectedThread: action.user });
+
+            console.log('FETCH_THREADS_SUCCESS', selectedUser);
+            return updateObject(...state, { threads: newThreads, selectedThread: selectedUser });
         case actionTypes.SELECT_THREAD:
             console.log('SELECT_THREAD', state.threads, action.idThread);
             return updateObject({ ...state, selectedThread: action.idThread })
-        // return state;
-
         default:
             return state;
     }
