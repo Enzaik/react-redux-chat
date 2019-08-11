@@ -24,7 +24,7 @@ export const authFail = (error) => {
 
 export const logout = (dispatch) => {
 
-    return dispatch =>{
+    return dispatch => {
         localStorage.removeItem('token');
         localStorage.removeItem('expirationDate');
         localStorage.removeItem('userId');
@@ -39,7 +39,7 @@ export const clear = () => {
     return dispatch => {
         dispatch(clearMessages());
         dispatch(clearThreads());
-       
+
     }
 }
 
@@ -99,7 +99,8 @@ export const auth = (email, password, isSingUp) => {
                     .then(
                         res => {
                             console.log(res.data);
-                            dispatch(initThreads(res.data, null));
+                            dispatch(init(res.data, null));
+                            //  dispatch(mock());
 
                         }
                     )
@@ -134,7 +135,18 @@ export const authCheckState = () => {
     }
 }
 
+export const init = (data, user) => {
+    console.log('init');
+    return dispatch => {
+        dispatch(initThreads(data, user));
+       
+    }
+}
+
+
 export const initThreads = (data, user) => {
+    console.log('initThreads',data);
+    
     return {
         type: actionTypes.FETCH_THREADS_SUCCESS,
         data: data,

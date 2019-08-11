@@ -11,10 +11,17 @@ export const fetchThreads = (user) => {
         .then(
             res => {
                 dispatch(fetchThreadsSuccess(res.data, user));
+                dispatch(mock());
             }
         )
     }
 
+}
+
+export const mock = () =>{
+    return {
+        type: 'mock'
+    }
 }
 
 export const fetchThreadsSuccess = (data,user) => {

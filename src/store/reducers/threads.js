@@ -48,7 +48,7 @@ const reducer = (state = initialState, action) => {
             console.log('FETCH_THREADS_SUCCESS', selectedUser);
             return updateObject(...state, { threads: newThreads, selectedThread: selectedUser });
         case actionTypes.SELECT_THREAD:
-            console.log('SELECT_THREAD', state.threads, action.idThread);
+           // console.log('SELECT_THREAD', state.threads, action.idThread);
             return updateObject({ ...state, selectedThread: action.idThread })
         default:
             return state;

@@ -27,23 +27,22 @@ class Layout extends Component {
 
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
-        console.log('componentDidMount');
+        // console.log('componentDidMount');
         if (this.props.location.search !== "") {
-            console.log('rendering params');
             for (var param of query.entries()) {
                 this.props.onInit(param[1]);
                 this.props.history.push(this.props.location.pathname + this.props.location.search)
             }
         } else {
-            console.log('rendering vendor');
-            this.props.onInit(null); 
+            this.props.onInit(null);
         }
+       
     }
 
 
 
     render() {
-       return (
+        return (
             <Aux>
                 <Toolbar
                     isAuth={this.props.isAuthenticated}
@@ -68,7 +67,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onInit: (user) => dispatch(actions.fetchThreads(user))
+        onInit: (user) => dispatch(actions.fetchThreads(user)),
+       
     }
 }
 

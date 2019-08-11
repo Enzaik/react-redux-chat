@@ -8,11 +8,15 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     let newMessages = [];
-  switch (action.type) {
+    switch (action.type) {
+        case "mock":
+            console.log('mock');
+            return state;
+
         case actionTypes.CLEAR_MESSAGES:
             return updateObject({ ...state, messages: [] });
         case actionTypes.FETCH_MESSAGES_SUCCESS:
-            console.log(('FETCH_MESSAGES_SUCCESS action', action.user));
+            console.log('FETCH_MESSAGES_SUCCESS', action.user);
             let alien = '';
             let loggedUser = localStorage.getItem('user');
             let msgs = Object.keys(action.data);
@@ -25,9 +29,8 @@ const reducer = (state = initialState, action) => {
             })
             return updateObject({ ...state, messages: newMessages })
 
+
         //  TODO: improve this
-
-
         default:
             return state;
 

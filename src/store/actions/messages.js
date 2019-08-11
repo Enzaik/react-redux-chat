@@ -4,7 +4,6 @@ import axios from '../../axios-instance';
 
 export const fetchMessages = (user) => {
     console.log('fetchMessages', user);
-
     return dispatch => {
         dispatch(fetchMessagesStart());
         axios.get('/messages.json')
@@ -30,6 +29,7 @@ export const fetchMessagesFail = () => {
     };
 };
 export const fetchMessagesSuccess = (data, user, id) => {
+    console.log('messages action');
     return {
         type: actionTypes.FETCH_MESSAGES_SUCCESS,
         data: data,
