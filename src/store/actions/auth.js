@@ -29,6 +29,7 @@ export const logout = (dispatch) => {
         localStorage.removeItem('expirationDate');
         localStorage.removeItem('userId');
         dispatch(clear());
+        dispatch(authLogout());
     }
 
 
@@ -38,7 +39,7 @@ export const clear = () => {
     return dispatch => {
         dispatch(clearMessages());
         dispatch(clearThreads());
-        dispatch(authLogout());
+       
     }
 }
 
