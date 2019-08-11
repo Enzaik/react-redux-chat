@@ -10,8 +10,8 @@ class Threads extends Component {
 
     componentDidMount() { //log only
         this.props.onInitMessages(this.props.selectedTh)
-        console.log('componentDidMount', this.props);
-    }
+        console.log(' thread componentDidMount', this.props.selectedTh);
+   }
 
     clickHandler = (name) => {
         this.props.history.push({

@@ -3,14 +3,13 @@ import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
 
 export const fetchMessages = (user) => {
-    console.log('fetchMessages',user);
-    
+    console.log('fetchMessages', user);
+
     return dispatch => {
         dispatch(fetchMessagesStart());
         axios.get('/messages.json')
             .then(
                 res => {
-
                     dispatch(fetchMessagesSuccess(res.data, user))
                 }
             )

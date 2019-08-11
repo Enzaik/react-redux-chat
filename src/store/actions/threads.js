@@ -11,7 +11,6 @@ export const fetchThreads = (user) => {
         .then(
             res => {
                 dispatch(fetchThreadsSuccess(res.data, user));
-                
             }
         )
     }

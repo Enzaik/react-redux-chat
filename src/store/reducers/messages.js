@@ -3,17 +3,16 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../utility';
 
 const initialState = {
-    messages: [],
-
+    messages: []
 };
 
-const reducer = (state = initialState, action) => { 
+const reducer = (state = initialState, action) => {
     let newMessages = [];
-   
-    
-    switch (action.type) {
+  switch (action.type) {
+        case actionTypes.CLEAR_MESSAGES:
+            return updateObject({ ...state, messages: [] });
         case actionTypes.FETCH_MESSAGES_SUCCESS:
-            console.log(('FETCH_MESSAGES_SUCCESS action',action.user));
+            console.log(('FETCH_MESSAGES_SUCCESS action', action.user));
             let alien = '';
             let loggedUser = localStorage.getItem('user');
             let msgs = Object.keys(action.data);

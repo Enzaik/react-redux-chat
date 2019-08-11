@@ -10,6 +10,8 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.CLEAR_THREADS:
+            return updateObject({...state, threads: [], selectedThread: ''});//initial
         case actionTypes.FETCH_THREADS_SUCCESS:
             let loggedUser = localStorage.getItem('user');
             let selectedUser = action.user;

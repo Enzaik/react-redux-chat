@@ -22,14 +22,46 @@ export const authFail = (error) => {
     };
 };
 
-export const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expirationDate');
-    localStorage.removeItem('userId');
+export const logout = (dispatch) => {
+
+    return dispatch =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('expirationDate');
+        localStorage.removeItem('userId');
+        dispatch(clear());
+    }
+
+
+};
+
+export const clear = () => {
+    return dispatch => {
+        dispatch(clearMessages());
+        dispatch(clearThreads());
+        dispatch(authLogout());
+    }
+}
+
+export const authLogout = () => {
     return {
         type: actionTypes.AUTH_LOGOUT
     };
-};
+}
+
+
+export const clearMessages = () => {
+    console.log('clearMessages');
+    return {
+        type: actionTypes.CLEAR_MESSAGES
+    }
+}
+
+export const clearThreads = () => {
+    console.log('clearThreads');
+    return {
+        type: actionTypes.CLEAR_THREADS
+    }
+}
 
 export const checkAuthTimeout = (expirationTime) => {
     return dispatch => {
